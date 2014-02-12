@@ -1,3 +1,9 @@
+python-daemon (1.5.5-3) unstable; urgency=low
+
+  * Patched version of 1.5.5: set correct groups before chuid.
+
+ -- Aleksey Morarash <aleksey.morarash@massivesolutions.eu>  Wed, 29 Jan 2014 21:06:00 +0200
+
 python-daemon (1.5.5-1) unstable; urgency=low
 
   * New upstream version. Highlights since previous release:
