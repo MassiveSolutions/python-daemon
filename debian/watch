@@ -1,0 +1,9 @@
+# debian/watch
+# Debian uscan file for python-daemon package.
+# Manpage: uscan(1)
+
+# Compulsory line, this is a version 3 file.
+version=3
+
+# Current version from Python cheeseshop.
+http://pypi.python.org/packages/source/p/python-daemon/python-daemon-(.+).tar.gz

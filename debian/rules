@@ -1,0 +1,36 @@
+#! /usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+#
+# debian/rules
+#
+# Copyright © 2008–2009 Ben Finney <ben+debian@benfinney.id.au>
+# This is free software; you may copy, modify, and/or distribute this work
+# under the terms of the GNU General Public License, version 2 or later.
+# No warranty expressed or implied.
+# See the file '/usr/share/common-licenses/GPL-2' for details.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+
+.PHONY: build
+build:
+	dh build
+
+.PHONY: clean
+clean:
+	dh clean
+
+.PHONY: install
+install: build
+	dh install
+
+.PHONY: binary-indep
+binary-indep: build install
+	dh binary-indep
+
+.PHONY: binary-arch
+binary-arch: build install
+
+.PHONY: binary
+binary: build binary-indep binary-arch

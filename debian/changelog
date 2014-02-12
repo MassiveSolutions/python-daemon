@@ -1,0 +1,80 @@
+python-daemon (1.5.5-1) unstable; urgency=low
+
+  * New upstream version. Highlights since previous release:
+    + Stop using ‘pkg_resources’ and revert to pre-1.5.3 version-string
+      handling, until a better way that doesn't break everyone else's
+      installation can be found.
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Sat, 10 Apr 2010 15:44:43 +1000
+
+python-daemon (1.5.4-1) unstable; urgency=low
+
+  * New upstream version. Highlights since previous release:
+    * Invoke the pidfile context manager's ‘__exit__’
+      method with the correct arguments (as per
+      <URL:http://docs.python.org/library/stdtypes.html#typecontextmanager>).
+  * debian/source/format:
+    * Declare source package format.
+  * debian/control:
+    * Build-Depends on all dependencies, so that ‘pkg_resources.require’
+      works for all packaging actions.
+    * Conform to ‘Standards-Version: 3.8.4’ (no additional changes needed).
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Sat, 27 Feb 2010 22:57:50 +1100
+
+python-daemon (1.5.2-2) unstable; urgency=medium
+
+  * Urgency ‘medium’ to address serious packaging bug.
+  * debian/control:
+    + Fix missing dependency on ‘python-lockfile’.
+      (Closes: Bug#565352)
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Fri, 15 Jan 2010 13:51:34 +1100
+
+python-daemon (1.5.2-1) unstable; urgency=low
+
+  * New upstream version. Highlights since previous release:
+    * Ensure we only prevent core dumps if ‘prevent_core’ is true.
+    * Implement ‘TimeoutPIDLockFile’ to specify a timeout in advance of
+      lock acquisition.
+    * Distinguish different conditions on reading and parsing PID file.
+    * Write the PID file using correct OS locking and permissions.
+    * Close the PID file after writing.
+    * Implement ‘PIDLockFile’ as subclass of ‘lockfile.LinkFileLock’.
+    * Only inspect the file descriptor of streams if they have one.
+  * debian/control:
+    * Drop ‘Provides’ field, since a Python-versioned dependency should
+      not be necessary (ref. ‘python-support’ documentation).
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Fri, 06 Nov 2009 14:29:01 +1100
+
+python-daemon (1.4.8-1) unstable; urgency=medium
+
+  * Urgency medium to fix broken behaviour in common scenarios.
+  * New upstream version.
+    + Drop default handling of ‘SIGCLD’ signal, to avoid bad interactions
+      with other Python standard library modules.
+  * debian/control:
+    + Set ‘Priority: optional’ to allow other common packages to depend on
+      this one.
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Fri, 18 Sep 2009 08:46:56 +1000
+
+python-daemon (1.4.7-1) unstable; urgency=low
+
+  * New upstream version.
+    + Exclude ‘test’ package from distribution installation.
+    (Closes: Bug#544391)
+  * debian/pyversions:
+    + Require at least Python 2.5.
+  * debian/control:
+    + Update to ‘Standards-Version: 3.8.3’ (no additional changes needed).
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Fri, 04 Sep 2009 00:13:07 +1000
+
+python-daemon (1.4.6-1) unstable; urgency=low
+
+  * Initial Debian packaging.
+    (Closes: bug#524861)
+
+ -- Ben Finney <ben+debian@benfinney.id.au>  Sun, 21 Jun 2009 23:55:01 +1000
