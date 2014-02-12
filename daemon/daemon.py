@@ -25,6 +25,8 @@ import errno
 import signal
 import socket
 import atexit
+import pwd
+import grp
 
 
 class DaemonError(Exception):
@@ -514,6 +516,12 @@ def change_process_owner(uid, gid):
 
         """
     try:
+        user_struct = pwd.getpwuid(uid)
+        groups = [group_struct.gr_gid
+                  for group_struct in grp.getgrall()
+                  if user_struct.pw_name in group_struct.gr_mem]
+        groups.append(user_struct.pw_gid)
+        os.setgroups(groups)
         os.setgid(gid)
         os.setuid(uid)
     except Exception, exc:
